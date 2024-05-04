@@ -1,16 +1,14 @@
-const HEADERS = new Headers()
-HEADERS.append('Content-Type', 'application/json')
-
-function fetchJobList(limit = 10, offset = 0) {
+async function fetchJobList(limit = 10, offset = 0) {
 	const requestOptions = {
-		headers: HEADERS,
-		body: {
+		headers: new Headers({
+			'Content-Type': 'application/json',
+		}),
+		body: JSON.stringify({
 			limit,
 			offset,
-		},
+		}),
 		method: 'POST',
 	}
-
 	return new Promise((resolve, reject) => {
 		fetch(
 			'https://api.weekday.technology/adhoc/getSampleJdJSON',
@@ -18,7 +16,7 @@ function fetchJobList(limit = 10, offset = 0) {
 		)
 			.then((r) => r.json(), reject)
 			.then(resolve, reject)
-			.catch(reject)
+			.catch(console.error)
 	})
 }
 
