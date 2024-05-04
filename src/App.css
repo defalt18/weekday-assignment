@@ -1,3 +1,7 @@
+:root {
+  --weekday-gray: '#8b8b8b';
+}
+
 @font-face {
   font-family: 'Weekday light';
   src: url('assets/fonts/weekday-font-light.woff2') format('truetype');
@@ -16,4 +20,39 @@
 @font-face {
   font-family: 'Weekday head';
   src: url('assets/fonts/weekday-font-extra-bold.woff2') format('truetype');
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  gap: 3rem;
+}
+
+.facets-area {
+  border: 1px solid black;
+  padding: 2rem
+}
+
+.list-area {
+  border: 1px solid black;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.card-area {
+  border: 1px solid black;
+  height: 10rem;
+  display: grid;
+  place-items: center;
+  /*width: 8rem;*/
+}
+
+@media (max-width: 768px) {
+  .list-area {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
