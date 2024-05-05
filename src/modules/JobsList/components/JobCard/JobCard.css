@@ -1,11 +1,17 @@
 .card {
+    --weekday-gray: #8b8b8b;
+    --weekday-purple: rgb(73, 67, 218);
     width: calc(33.33% - 12rem);
     min-width: 360px;
-    height: 40rem;
+    height: 42rem;
     margin: 0 2rem;
 }
 
 .card-header p {
+    margin: 0;
+}
+
+.card-description p {
     margin: 0;
 }
 
@@ -26,15 +32,17 @@
 }
 
 .card-location-name {
-    margin-top: 5px;
+    font-family: "Weekday body";
+    margin-top: 5px !important;
 }
 
 .card-description {
-    max-height: 40%;
+    max-height: 20rem;
 }
 
 .card-description-text {
     overflow: hidden;
+    margin-bottom: 10px !important;
 }
 
 .card-action-area {
@@ -49,21 +57,36 @@
 .card-action {
     background: var(--weekday-green);
     border: none;
-    width: 100%;
+    width: calc(100% - 1rem);
     font-size: 16px;
     cursor: pointer;
     font-family: "Weekday body";
     padding: 8px 18px;
     border-radius: 8px;
+    margin-top: 8px;
     line-height: 1.75;
+}
+
+.card-action-purple {
+    background: var(--weekday-purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.MuiPaper-root {
+    padding: 0 !important;
 }
 
 .MuiCard-root {
     width: 360px;
     height: 100%;
+    padding: 0.5rem 1rem;
     display: flex;
     flex-direction: column;
     border-radius: 20px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px !important;
 }
 
 .MuiChip-label {

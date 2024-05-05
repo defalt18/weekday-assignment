@@ -8,8 +8,9 @@ export const FACETS = [
 			{
 				label: 'ENGINEERING',
 				options: [
-					{ label: 'React Native', value: 'React Native' },
-					{ label: 'React', value: 'React' },
+					{ label: 'React Native', value: 'react native' },
+					{ label: 'React', value: 'react' },
+					{ label: 'Frontend', value: 'frontend' },
 				],
 			},
 		],
@@ -30,7 +31,7 @@ export const FACETS = [
 		placeholder: 'Minimum Base Pay Salary',
 		options: Array(8)
 			.fill(10, 0, 70)
-			.map((_, i) => ({ label: (i * 10).toString() + 'L', value: i * 10 })),
+			.map((_, i) => ({ label: (i * 10).toString() + 'K', value: i * 10 })),
 		label: 'Min Base Pay',
 	},
 	{

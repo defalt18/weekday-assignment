@@ -21,7 +21,7 @@ function KeywordInput({ onChange, name, placeholder, label }) {
 				{!isEmpty(keyword) && label}
 			</label>
 			<input
-				className='facet-text-field'
+				className='facet-text-field facet-text-field-typography'
 				name={name}
 				placeholder={placeholder}
 				value={keyword}

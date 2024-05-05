@@ -39,7 +39,7 @@ const JobCardHeader = memo(function () {
 				</div>
 			</div>
 			{!isNaN(maxJdSalary) && !isNaN(minJdSalary) && (
-				<p className='text-l color-weekday-gray'>
+				<p className='text-l'>
 					Estimated Salary : ${minJdSalary}k - {maxJdSalary}k{' '}
 					{salaryCurrencyCode} ✅
 				</p>
@@ -59,7 +59,7 @@ const JobCardDescription = memo(() => {
 					<p className='color-weekday-gray text-base font-bold'>
 						Minimum Experience
 					</p>
-					<p>{minExp} years</p>
+					<p className='text-l'>{minExp} years</p>
 				</>
 			)}
 		</div>
@@ -68,9 +68,15 @@ const JobCardDescription = memo(() => {
 
 const JobCardFooter = memo(() => {
 	return (
-		<Button className='card-action' variant='contained'>
-			⚡️ Easy Apply
-		</Button>
+		<div className='flex-col items-center'>
+			<Button className='card-action' variant='contained'>
+				⚡️ Easy Apply
+			</Button>
+			<Button className='card-action card-action-purple' variant='contained'>
+				<Avatar sx={{ width: 24, height: 24 }} />️
+				<span className='text-xl text-white'>Ask for referral</span>
+			</Button>
+		</div>
 	)
 })
 

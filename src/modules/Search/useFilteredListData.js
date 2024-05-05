@@ -21,24 +21,22 @@ function useFilteredListData() {
 	const fetchNext = useCallback(() => {
 		if (!loading && metadata.totalCount >= offset + LIMIT + NEXT_OFFSET_SIZE)
 			setOffset((off) => off + NEXT_OFFSET_SIZE)
-	}, [loading, offset])
+	}, [loading, offset, metadata.totalCount])
 
 	const postFetch = useCallback((data) => {
 		setMetadata({ totalCount: data })
 	}, [])
 
-	console.log('filter', filterState)
-
-	const updateLists = ({ data, filteredData }) => {
+	const updateLists = useCallback(({ data, filteredData }) => {
 		setListData((prevState) => [...prevState, ...data])
 		setFilteredListData((data) => [...data, ...filteredData])
 		setLoading(false)
-	}
+	}, [])
 
 	useEffect(() => {
 		setLoading(true)
 		getMoreJobs(LIMIT, offset, filterState, postFetch, updateLists)
-	}, [offset])
+	}, [offset, postFetch, updateLists])
 
 	useEffect(() => {
 		if (listData.length)

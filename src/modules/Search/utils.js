@@ -4,22 +4,36 @@ import { compose, isEmpty, isNaN } from '../../utils'
 export function filterDataBasedOnState(filterState, data) {
 	let displayData = data
 
-	if (isEmpty(filterState)) return { data, filteredData: displayData }
+	displayData = displayData.filter((jobItem) => {
+		let isNeeded = true
 
-	// for (let attr of Object.keys(filterState)) {
-	// 	if (isEmpty(filterState[attr])) {
-	// 		continue
-	// 	} else {
-	// 		if (isNaN(filterState[attr])) {
-	//
-	// 		} else {
-	// 		}
-	// 	}
-	// }
+		for (let attr of Object.keys(filterState)) {
+			const attrValue = filterState[attr]
 
-	displayData = displayData.filter((it) =>
-		it.companyName.includes(filterState.companyName)
-	)
+			if (!isEmpty(attrValue)) {
+				if (isNaN(attrValue)) {
+					if (Array.isArray(attrValue)) {
+						isNeeded = isNeeded && attrValue.includes(jobItem[attr])
+					} else {
+						isNeeded =
+							isNeeded && jobItem.companyName.includes(filterState.companyName)
+					}
+				} else {
+					if (attr === 'minExp')
+						isNeeded =
+							isNeeded &&
+							!isNaN(jobItem[attr]) &&
+							jobItem[attr] <= attrValue &&
+							(isNaN(jobItem.maxExp) || attrValue <= jobItem.maxExp)
+					else if (attr === 'minJdSalary')
+						isNeeded =
+							isNeeded && !isNaN(jobItem[attr]) && jobItem[attr] >= attrValue
+				}
+			}
+		}
+
+		return isNeeded
+	})
 
 	return { data, filteredData: displayData }
 }

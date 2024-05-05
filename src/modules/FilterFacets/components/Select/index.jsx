@@ -7,14 +7,16 @@ function SelectFilter(props) {
 	const [value, setValue] = useState(null)
 
 	const onSelectValueChange = useCallback(
-		(option, selectedValue, t) => {
+		(option) => {
 			setValue(option)
 			onChange((d) => ({
 				...d,
-				[name]: isMulti ? option.map(({ value }) => value) : option.value,
+				[name]: isMulti
+					? option.map(({ value }) => value)
+					: option?.value || '',
 			}))
 		},
-		[onChange]
+		[isMulti, name, onChange]
 	)
 
 	return (
@@ -29,7 +31,12 @@ function SelectFilter(props) {
 				value={value}
 				name={name}
 				options={options}
-				placeholder={<p className='facet-text-field'>{placeholder}</p>}
+				placeholder={
+					<p className='facet-text-field-typography'>{placeholder}</p>
+				}
+				styles={{
+					input: (s) => ({ ...s, width: '10rem' }),
+				}}
 				onChange={onSelectValueChange}
 			/>
 		</div>

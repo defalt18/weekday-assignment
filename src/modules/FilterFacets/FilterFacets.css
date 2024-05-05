@@ -1,14 +1,21 @@
 .facet-text-field {
-    font-size: 14px;
-    font-family: "Weekday bold";
-    padding: 0.5rem;
-    width: 15rem;
+    padding: 2px 8px;
+    min-height: 38px;
+    height: 50px;
+    width: 17rem;
     overflow: scroll;
+    border-width: 1px;
+    border-color: hsl(0, 0%, 80%);
+    box-sizing: border-box;
+    border-style: solid;
+    border-radius: 4px;
 }
 
-.facet-label {
+.facet-text-field-typography {
     font-size: 14px;
-    height: 1.2rem;
-    display: block;
     font-family: "Weekday bold";
+}
+.select-filter {
+    width: 15rem;
+    padding: 0.5rem;
 }
