@@ -53,7 +53,12 @@ const JobCardDescription = memo(() => {
 	return (
 		<div className='card-description'>
 			<h3>About Company</h3>
-			<p className='text-l card-description-text'>{jobDetailsFromCompany}</p>
+			<p className='text-l card-description-text'>
+				{jobDetailsFromCompany}
+				<div className='description-mask'>
+					<Button className='mask-action'>View job</Button>
+				</div>
+			</p>
 			{!isNaN(minExp) && (
 				<>
 					<p className='color-weekday-gray text-base font-bold'>

@@ -3,7 +3,7 @@
     --weekday-purple: rgb(73, 67, 218);
     width: calc(33.33% - 12rem);
     min-width: 360px;
-    height: 42rem;
+    height: 40rem;
 }
 
 .card-header p {
@@ -30,6 +30,27 @@
     text-decoration: underline;
 }
 
+.description-mask {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0, rgba(255,255,255,1) 100%);
+    position: absolute;
+    bottom: 0;
+    height: 20rem;
+    width: 100%;
+    display: grid;
+    place-items: end;
+}
+
+.mask-action {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    background: none;
+    color: var(--weekday-purple);
+    font-size: 16px;
+    font-family: "Weekday body";
+    cursor: pointer;
+    border: none;
+}
+
 .card-location-name {
     font-family: "Weekday body";
     margin-top: 5px !important;
@@ -41,6 +62,7 @@
 
 .card-description-text {
     overflow: hidden;
+    position: relative;
     margin-bottom: 10px !important;
 }
 
