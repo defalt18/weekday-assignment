@@ -70,6 +70,10 @@
   align-items: center;
 }
 
+.font-extra-bold {
+  font-family: "Weekday head";
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;

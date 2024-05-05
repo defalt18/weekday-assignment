@@ -20,7 +20,7 @@ function ListIntersectionComponent({ fetchNext, isMoreResultsAvailable }) {
 				ref={lastEleRef}
 				style={{ display: isMoreResultsAvailable ? 'block' : 'none' }}
 			>
-				Loading
+				Loading...
 			</div>
 		</>
 	)
