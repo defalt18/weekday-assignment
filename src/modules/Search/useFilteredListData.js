@@ -16,11 +16,16 @@ function useFilteredListData() {
 	const [metadata, setMetadata] = useState({})
 	const [offset, setOffset] = useState(0)
 	const [filteredListData, setFilteredListData] = useState([])
+	const [isMoreResultsAvailable, setIsMoreResultsAvailable] = useState(true)
 	const [filterState, setFilterState] = useState(DEFAULT_FILTER_STATE)
 
 	const fetchNext = useCallback(() => {
-		if (!loading && metadata.totalCount >= offset + LIMIT + NEXT_OFFSET_SIZE)
+		if (!loading && metadata.totalCount >= offset + LIMIT + NEXT_OFFSET_SIZE) {
 			setOffset((off) => off + NEXT_OFFSET_SIZE)
+		} else {
+			if (metadata.totalCount <= offset + LIMIT + NEXT_OFFSET_SIZE)
+				setIsMoreResultsAvailable(false)
+		}
 	}, [loading, offset, metadata.totalCount])
 
 	const postFetch = useCallback((data) => {
@@ -51,7 +56,13 @@ function useFilteredListData() {
 		filterState.minJdSalary,
 	])
 
-	return { fetchNext, setFilterState, jobList: filteredListData, loading }
+	return {
+		fetchNext,
+		setFilterState,
+		jobList: filteredListData,
+		loading,
+		isMoreResultsAvailable,
+	}
 }
 
 export default useFilteredListData

@@ -8,9 +8,11 @@ export const FACETS = [
 			{
 				label: 'ENGINEERING',
 				options: [
-					{ label: 'React Native', value: 'react native' },
-					{ label: 'React', value: 'react' },
 					{ label: 'Frontend', value: 'frontend' },
+					{ label: 'Tech lead', value: 'tech lead' },
+					{ label: 'Backend', value: 'backend' },
+					{ label: 'iOS', value: 'ios' },
+					{ label: 'Android', value: 'android' },
 				],
 			},
 		],

@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef } from 'react'
 
-function ListIntersectionComponent({ fetchNext }) {
+function ListIntersectionComponent({ fetchNext, isMoreResultsAvailable }) {
 	const lastEleRef = useRef(null)
 	useEffect(() => {
 		const intersectionObserver = new IntersectionObserver(([entry]) => {
@@ -15,7 +15,13 @@ function ListIntersectionComponent({ fetchNext }) {
 	return (
 		<>
 			<div className='spacer' />
-			<div id='intersection-point' ref={lastEleRef} />
+			<div
+				id='intersection-point'
+				ref={lastEleRef}
+				style={{ display: isMoreResultsAvailable ? 'block' : 'none' }}
+			>
+				Loading
+			</div>
 		</>
 	)
 }

@@ -4,7 +4,6 @@
     width: calc(33.33% - 12rem);
     min-width: 360px;
     height: 42rem;
-    margin: 0 2rem;
 }
 
 .card-header p {

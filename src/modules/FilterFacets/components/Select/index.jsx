@@ -36,6 +36,7 @@ function SelectFilter(props) {
 				}
 				styles={{
 					input: (s) => ({ ...s, width: '10rem' }),
+					control: (s) => ({ ...s, height: '3rem' }),
 				}}
 				onChange={onSelectValueChange}
 			/>

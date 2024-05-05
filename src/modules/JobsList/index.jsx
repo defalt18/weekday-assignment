@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import JobCard from './components/JobCard'
 import ListIntersectionComponent from './components/ListIntersectionComponent'
 
-function JobsList({ jobList = [], fetchNext }) {
+function JobsList({ jobList = [], fetchNext, isMoreResultsAvailable }) {
 	return (
 		<div id='list'>
 			<div className='list-area'>
@@ -10,7 +10,10 @@ function JobsList({ jobList = [], fetchNext }) {
 					<JobCard key={ind} {...job} />
 				))}
 			</div>
-			<ListIntersectionComponent fetchNext={fetchNext} />
+			<ListIntersectionComponent
+				fetchNext={fetchNext}
+				isMoreResultsAvailable={isMoreResultsAvailable}
+			/>
 		</div>
 	)
 }
