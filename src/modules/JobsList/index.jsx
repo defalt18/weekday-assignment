@@ -1,17 +1,16 @@
 import React, { memo } from 'react'
 import JobCard from './components/JobCard'
+import ListIntersectionComponent from './components/ListIntersectionComponent'
 
-function JobsList(props) {
+function JobsList({ jobList = [], fetchNext }) {
 	return (
-		<div>
-			<h3>List goes here</h3>
+		<div id='list'>
 			<div className='list-area'>
-				{Array(12)
-					.fill('')
-					.map((c, ind) => (
-						<JobCard key={ind} />
-					))}
+				{jobList.map((job, ind) => (
+					<JobCard key={ind} {...job} />
+				))}
 			</div>
+			<ListIntersectionComponent fetchNext={fetchNext} />
 		</div>
 	)
 }

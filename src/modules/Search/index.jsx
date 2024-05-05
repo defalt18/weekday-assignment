@@ -1,15 +1,15 @@
 import React, { memo } from 'react'
 import FilterFacets from '../../modules/FilterFacets'
 import JobsList from '../../modules/JobsList'
+import useFilteredListData from './useFilteredListData'
 
 function SearchJobs(props) {
-	// const [filterState, setFilterState] = React.useState({})
-	// const [jobList, setJobList] = React.useState()
+	const { fetchNext, jobList, setFilterState } = useFilteredListData()
 
 	return (
 		<div className='page-container'>
-			<FilterFacets />
-			<JobsList />
+			<FilterFacets setFilterState={setFilterState} />
+			<JobsList jobList={jobList} fetchNext={fetchNext} />
 		</div>
 	)
 }

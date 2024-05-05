@@ -1,20 +1,44 @@
 .card {
-    border-radius: 20px !important;
-    width: 360px;
+    width: calc(33.33% - 12rem);
+    min-width: 360px;
+    height: 40rem;
+    margin: 0 2rem;
 }
 
 .card-header p {
     margin: 0;
 }
 
+#intersection-point {
+    width: 100%;
+    text-align: center;
+    padding: 4rem 0;
+}
+
 .card-company-name {
+    cursor: pointer;
     font-family: 'Weekday bold';
-    margin-bottom: 3px;
     color: var(--weekday-gray);
+}
+
+.card-company-name:hover {
+    text-decoration: underline;
 }
 
 .card-location-name {
     margin-top: 5px;
+}
+
+.card-description {
+    max-height: 40%;
+}
+
+.card-description-text {
+    overflow: hidden;
+}
+
+.card-action-area {
+    margin-top: auto;
 }
 
 .card-chip {
@@ -27,10 +51,19 @@
     border: none;
     width: 100%;
     font-size: 16px;
+    cursor: pointer;
     font-family: "Weekday body";
     padding: 8px 18px;
     border-radius: 8px;
     line-height: 1.75;
+}
+
+.MuiCard-root {
+    width: 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px !important;
 }
 
 .MuiChip-label {

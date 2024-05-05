@@ -4,11 +4,18 @@ import { Button } from '@mui/base/Button'
 import './JobCard.css'
 import { CardContext } from './context'
 import useCardContext from './useCardContext'
-import { isEmpty } from '../../../../utils'
+import { isNaN, toSentenceCase } from '../../../../utils'
 
 const JobCardHeader = memo(function () {
-	const { logoUrl, companyName, jobRole, location, maxJdSalary, minJdSalary } =
-		useCardContext()
+	const {
+		logoUrl,
+		companyName,
+		jobRole,
+		location,
+		maxJdSalary,
+		minJdSalary,
+		salaryCurrencyCode,
+	} = useCardContext()
 
 	return (
 		<div className='card-header'>
@@ -22,16 +29,19 @@ const JobCardHeader = memo(function () {
 			<div className='flex gap-8'>
 				<Avatar src={logoUrl} variant='square' />
 				<div className='flex-col'>
-					<p className='card-company-name text-base color-weekday-gray'>
+					<span className='card-company-name text-base color-weekday-gray'>
 						{companyName}
+					</span>
+					<p className='text-l'>{toSentenceCase(jobRole)}</p>
+					<p className='card-location-name text-small'>
+						{toSentenceCase(location)}
 					</p>
-					<p className='text-l'>{jobRole}</p>
-					<p className='card-location-name text-small'>{location}</p>
 				</div>
 			</div>
-			{isEmpty(maxJdSalary) && isEmpty(minJdSalary) && (
+			{!isNaN(maxJdSalary) && !isNaN(minJdSalary) && (
 				<p className='text-l color-weekday-gray'>
-					Estimated Salary : ₹25 - 30 LPA ✅
+					Estimated Salary : ${minJdSalary}k - {maxJdSalary}k{' '}
+					{salaryCurrencyCode} ✅
 				</p>
 			)}
 		</div>
@@ -43,8 +53,8 @@ const JobCardDescription = memo(() => {
 	return (
 		<div className='card-description'>
 			<h3>About Company</h3>
-			<span className='text-l'>{jobDetailsFromCompany}</span>
-			{isEmpty(minExp) && (
+			<p className='text-l card-description-text'>{jobDetailsFromCompany}</p>
+			{!isNaN(minExp) && (
 				<>
 					<p className='color-weekday-gray text-base font-bold'>
 						Minimum Experience
@@ -67,15 +77,17 @@ const JobCardFooter = memo(() => {
 function JobCard(props) {
 	return (
 		<CardContext.Provider value={props}>
-			<Card className='card'>
-				<CardContent>
-					<JobCardHeader />
-					<JobCardDescription />
-				</CardContent>
-				<CardActions>
-					<JobCardFooter />
-				</CardActions>
-			</Card>
+			<div className='card'>
+				<Card>
+					<CardContent>
+						<JobCardHeader />
+						<JobCardDescription />
+					</CardContent>
+					<CardActions className='card-action-area'>
+						<JobCardFooter />
+					</CardActions>
+				</Card>
+			</div>
 		</CardContext.Provider>
 	)
 }

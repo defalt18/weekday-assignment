@@ -1,4 +1,4 @@
-:root {
+:root, * {
   --weekday-gray: '#8b8b8b';
   --weekday-green: rgb(85, 239, 196);
 }
@@ -32,24 +32,25 @@
 
 .facets-area {
   border: 1px solid black;
-  padding: 2rem
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+
+.block {
+  display: block;
 }
 
 .list-area {
-  border: 1px solid black;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /*padding: 2rem;*/
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
   gap: 3rem;
   flex-grow: 1;
-}
-
-.card-area {
-  border: 1px solid black;
-  height: 10rem;
-  display: grid;
-  place-items: center;
-  /*width: 8rem;*/
 }
 
 .flex {
@@ -86,10 +87,6 @@
 
 .font-bold {
   font-family: "Weekday bold";
-}
-
-.color-weekday-gray {
-  color: var(--weekday-gray);
 }
 
 @media (max-width: 768px) {
