@@ -1,4 +1,5 @@
 import React, { memo, useEffect, useRef } from 'react'
+import './IntersectionComponent.css'
 
 function ListIntersectionComponent({ fetchNext, isMoreResultsAvailable }) {
 	const lastEleRef = useRef(null)
